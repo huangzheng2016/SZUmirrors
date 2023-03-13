@@ -1,0 +1,15 @@
+version: '2'
+services:
+  ubuntu:
+    image: ustcmirror/rsync
+    network_mode: host
+    environment: 
+      - LOG_ROTATE_CYCLE=5
+      - RSYNC_HOST=mirror.tuna.tsinghua.edu.cn
+      - RSYNC_PATH=ubuntu/
+      - RSYNC_MAXDELETE=1000000
+      - RSYNC_DELETE_DELAY=false
+      - RSYNC_DELAY_UPDATES=false
+    volumes:
+      - /data/repos/ubuntu:/data
+      - /data/docker/ubuntu/log:/log

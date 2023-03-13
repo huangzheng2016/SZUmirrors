@@ -1,0 +1,15 @@
+version: '2'
+services:
+  archlinux:
+    image: ustcmirror/rsync
+    network_mode: host
+    environment: 
+      - LOG_ROTATE_CYCLE=5
+      - RSYNC_HOST=rsync.mirrors.ustc.edu.cn
+      - RSYNC_PATH=archlinux/
+      - RSYNC_MAXDELETE=1000000
+      - RSYNC_DELETE_DELAY=true
+      - RSYNC_DELAY_UPDATES=true
+    volumes:
+      - /data/repos/archlinux:/data
+      - /data/docker/archlinux/log:/log

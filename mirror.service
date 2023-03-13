@@ -1,0 +1,15 @@
+[Unit]
+Description=SZUmirror
+ConditionPathExists=/data
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/data
+ExecStart=/usr/bin/python3 /data/mirror.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

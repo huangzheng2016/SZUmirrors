@@ -1,0 +1,15 @@
+version: '2'
+services:
+  kali:
+    image: ustcmirror/rsync
+    network_mode: host
+    environment: 
+      - LOG_ROTATE_CYCLE=5
+      - RSYNC_HOST=mirror.tuna.tsinghua.edu.cn
+      - RSYNC_PATH=kali/
+      - RSYNC_MAXDELETE=1000000
+      - RSYNC_DELETE_DELAY=true
+      - RSYNC_DELAY_UPDATES=true
+    volumes:
+      - /data/repos/kali:/data
+      - /data/docker/kali/log:/log

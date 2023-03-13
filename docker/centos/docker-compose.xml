@@ -1,0 +1,15 @@
+version: '2'
+services:
+  centos:
+    image: ustcmirror/rsync
+    network_mode: host
+    environment: 
+      - LOG_ROTATE_CYCLE=5
+      - RSYNC_HOST=rsync.mirrors.ustc.edu.cn
+      - RSYNC_PATH=centos/
+      - RSYNC_MAXDELETE=1000000
+      - RSYNC_DELETE_DELAY=true
+      - RSYNC_DELAY_UPDATES=true
+    volumes:
+      - /data/repos/centos:/data
+      - /data/docker/centos/log:/log

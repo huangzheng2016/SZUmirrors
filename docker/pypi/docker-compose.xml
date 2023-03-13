@@ -1,0 +1,9 @@
+version: '2'
+services:
+  pypi:
+    image: pypa/bandersnatch
+    command: bandersnatch mirror
+    network_mode: host
+    volumes:
+      - /data/repos/pypi:/srv/pypi
+      - /data/docker/pypi/bandersnatch.conf:/etc/bandersnatch.conf
